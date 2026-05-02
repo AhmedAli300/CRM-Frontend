@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="toolbar">
+    <input
+      [(ngModel)]="q"
+      (input)="onSearchChange()"
+      placeholder="Search by name/email/phone"
+      class="search-input"
+    />
+    <button (click)="onSearchChange()" class="btn primary">Search</button>
+    <a routerLink="/clients/new" class="btn success">+ Add Client</a>
+  </div>
+
+  <div *ngIf="!loading" class="cards-grid">
+    <div class="client-card" *ngFor="let c of clients">
+      <div class="card-header">
+        <h3><strong>Name:</strong> {{ c.name }}</h3>
+        <span class="company"><strong>Company:</strong> {{ c.company || '—' }}</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Email:</strong> {{ c.email }}</p>
+        <p><strong>Phone:</strong> {{ c.phone }}</p>
+      </div>
+      <div class="card-actions">
+        <button (click)="view(c._id!)" class="btn info">View</button>
+        <button (click)="edit(c._id!)" class="btn warning">Edit</button>
+        <button (click)="remove(c._id!)" class="btn danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

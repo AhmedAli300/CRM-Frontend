@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+
+<div class="dashboard">
+  <h2>📊 لوحة الإحصائيات</h2>
+
+  <div class="stats-summary">
+    <div class="card total">
+      <h3>إجمالي العملاء</h3>
+      <p>{{ totalClients }}</p>
+    </div>
+    <div class="card active">
+      <h3>العملاء النشطين</h3>
+      <p>{{ activeClients }}</p>
+    </div>
+    <div class="card inactive">
+      <h3>العملاء غير النشطين</h3>
+      <p>{{ inactiveClients }}</p>
+    </div>
+    <div class="card revenue">
+      <h3>إجمالي الإيرادات</h3>
+      <p>{{ totalRevenue | currency: 'EGP' }}</p>
+    </div>
+    <div class="card avg">
+      <h3>المتوسط الشهري</h3>
+      <p>{{ avgRevenue | currency: 'EGP' }}</p>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <h3>📅 تحليل عدد العملاء خلال آخر 6 شهور</h3>
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType">
+    </canvas>
+  </div>
+
+
+  <div *ngIf="selectedMonthStats" class="month-detail">
+    <h3>🗓️ تفاصيل شهر {{ selectedMonth }}</h3>
+    <div class="detail-cards">
+      <div class="detail-card">
+        <h4>العملاء الجدد</h4>
+        <p>{{ selectedMonthStats.newClients }}</p>
+      </div>
+      <div class="detail-card">
+        <h4>الإيرادات</h4>
+        <p>{{ selectedMonthStats.revenue | currency: 'EGP' }}</p>
+      </div>
+      <div class="detail-card">
+        <h4>النشطين</h4>
+        <p>{{ selectedMonthStats.active }}</p>
+      </div>
+      <div class="detail-card">
+        <h4>غير النشطين</h4>
+        <p>{{ selectedMonthStats.inactive }}</p>
+      </div>
+    </div>
+    <canvas
+      baseChart
+      [data]="detailChartData"
+      [type]="detailChartType"
+      [options]="{ responsive: true }">
+    </canvas>
+  </div>
+
+
+  <div class="month-details-grid">
+    <div class="month-card" *ngFor="let month of monthlyStats">
+      <h3>📆 {{ month.month }}</h3>
+      <div class="month-stats">
+        <p>العملاء الجدد: <strong>{{ month.count }}</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-section">
+    <div class="card">
+      <h3>🏆 أفضل العملاء</h3>
+      <ul>
+        <li *ngFor="let c of topClients">
+          <strong>{{ c.name }}</strong> - {{ c.totalSpent | currency: 'EGP' }}
+        </li>
+      </ul>
+      <p *ngIf="topClients.length === 0">لا يوجد عملاء مميزين حالياً.</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 المجالات الأكثر انتشارًا</h3>
+      <ul>
+        <li *ngFor="let f of topFields">
+          {{ f.field }} - {{ f.count }} عميل
+        </li>
+      </ul>
+      <p *ngIf="topFields.length === 0">لا توجد بيانات حالياً.</p>
+    </div>
+  </div>
+
+  <div class="extra-features">
+    <div class="card">
+      <h3>📣 الحملات التسويقية</h3>
+      <ul>
+        <li *ngFor="let c of campaigns">
+          {{ c.campaign }} - العملاء:
+          <strong>{{ c.clients }}</strong> - المجموع:
+          <strong>{{ c.totalSpent | currency: 'EGP' }}</strong>
+        </li>
+      </ul>
+      <p *ngIf="campaigns.length === 0">لا توجد حملات حالياً.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧠 تحليلات سلوك العملاء</h3>
+      <ul>
+        <li *ngFor="let b of behaviorStats">
+          {{ b.engagementLevel }} - متوسط الإنفاق:
+          <strong>{{ b.avgSpent | number }}</strong> - عدد العملاء:
+          <strong>{{ b.clients }}</strong>
+        </li>
+      </ul>
+      <p *ngIf="behaviorStats.length === 0">لا توجد بيانات حالياً.</p>
+    </div>
+
+    <div class="card">
+      <h3>📝 الشكاوى والملاحظات</h3>
+      <ul>
+        <li *ngFor="let com of complaints">
+          <strong>{{ com.client }}</strong> - "{{ com.message }}"
+        </li>
+      </ul>
+      <p *ngIf="complaints.length === 0">لا توجد شكاوى حالياً.</p>
+    </div>
+  </div>
+</div>

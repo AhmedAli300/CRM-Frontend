@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2>{{ id ? 'تعديل بيانات العميل' : 'إضافة عميل جديد' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="form-group">
+        <label>الاسم</label>
+        <input formControlName="name" placeholder="اسم العميل" />
+      </div>
+
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input formControlName="email" placeholder="example@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label>رقم الهاتف</label>
+        <input formControlName="phone" placeholder="+201000000000" />
+      </div>
+
+      <div class="form-group">
+        <label>الشركة</label>
+        <input formControlName="company" placeholder="اسم الشركة (اختياري)" />
+      </div>
+
+      <div class="form-group">
+        <label>المجال</label>
+        <input formControlName="field" placeholder="مثلاً: تسويق، برمجة، تصميم..." />
+      </div>
+
+      <div class="form-group">
+        <label>عدد الاشتراكات</label>
+        <input type="number" formControlName="subscriptions" placeholder="0" />
+      </div>
+
+      <div class="form-group">
+        <label>إجمالي الإنفاق</label>
+        <input type="number" formControlName="totalSpent" placeholder="0" />
+      </div>
+
+      <div class="form-group">
+        <label>آخر نشاط</label>
+        <input type="date" formControlName="lastActivity" />
+      </div>
+
+      <div class="form-group">
+        <label>ملاحظات</label>
+        <textarea formControlName="notes" placeholder="ملاحظات إضافية..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>الحالة</label>
+        <select formControlName="status">
+          <option value="Active">نشط</option>
+          <option value="Inactive">غير نشط</option>
+        </select>
+      </div>
+
+     
+      <hr />
+      <h3>⚙️ خصائص إضافية</h3>
+
+      <div class="form-group">
+        <label>الحملة التسويقية المشاركة</label>
+        <input formControlName="campaignParticipation" placeholder="اسم الحملة..." />
+      </div>
+
+      <div class="form-group">
+        <label>معدل الرضا (%)</label>
+        <input type="number" formControlName="satisfaction" placeholder="مثلاً: 85" />
+      </div>
+
+      <div class="form-group">
+        <label>موعد المتابعة القادمة</label>
+        <input type="date" formControlName="nextFollowUp" />
+      </div>
+
+      <div class="form-group">
+        <label>مهمة مخصصة</label>
+        <input formControlName="taskAssigned" placeholder="اسم المهمة..." />
+      </div>
+
+      <div class="form-group">
+        <label>نسبة احتمالية زيادة المبيعات (%)</label>
+        <input type="number" formControlName="potentialGrowth" placeholder="مثلاً: 40" />
+      </div>
+
+      <div class="form-group">
+        <label>شكاوى أو ملاحظات من العميل</label>
+        <textarea formControlName="complaint" placeholder="اكتب الشكوى إن وجدت..."></textarea>
+      </div>
+
+      <div class="btns">
+        <button type="submit" [disabled]="loading || form.invalid">
+          {{ loading ? 'جارٍ الحفظ...' : (id ? 'تحديث' : 'حفظ') }}
+        </button>
+        <a routerLink="/clients" class="cancel-btn">إلغاء</a>
+      </div>
+    </form>
+  </div>
+</div>

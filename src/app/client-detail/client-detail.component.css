@@ -1,0 +1,87 @@
+.client-container {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+  min-height: 100vh;
+}
+
+.client-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.client-header h2 {
+  font-size: 28px;
+  margin: 0;
+  color: #0f172a;
+}
+
+.company {
+  font-size: 16px;
+  color: #64748b;
+}
+
+.client-info p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #374151;
+}
+
+.section-title {
+  margin-top: 32px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.transactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.tx-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.04);
+  font-size: 14px;
+  color: #334155;
+}
+
+.tx-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.tx-form input {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 15px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.tx-form button {
+  padding: 10px 16px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}

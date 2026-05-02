@@ -1,0 +1,112 @@
+.container {
+  padding: 32px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  min-width: 240px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.btn.primary {
+  background-color: #0078d4;
+  color: white;
+}
+
+.btn.success {
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+}
+
+.btn.info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn.warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn.danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.client-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header {
+  margin-bottom: 12px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.card-header .company {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.card-body p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.card-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

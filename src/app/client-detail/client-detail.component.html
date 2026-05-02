@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="client-container">
+  <div *ngIf="client" class="client-card">
+    <div class="client-header">
+      <h2>{{ client.name }}</h2>
+      <span class="company">🏢 {{ client.company || '—' }}</span>
+    </div>
+
+    <div class="client-info">
+      <p><strong>📧 Email:</strong> {{ client.email }}</p>
+      <p><strong>📞 Phone:</strong> {{ client.phone }}</p>
+      <p><strong>📝 Notes:</strong> {{ client.notes || '—' }}</p>
+    </div>
+
+    <h3 class="section-title">💳 Transactions</h3>
+    <div class="transactions-grid">
+      <div class="tx-card" *ngFor="let t of client.transactions || []">
+        <div><strong>Date:</strong> {{ t.date | date:'mediumDate' }}</div>
+        <div><strong>Amount:</strong> {{ t.amount }}</div>
+        <div><strong>Note:</strong> {{ t.note || '—' }}</div>
+      </div>
+    </div>
+
+    <h4 class="section-title">➕ Add Transaction</h4>
+    <form [formGroup]="txForm" (ngSubmit)="addTx()" class="tx-form">
+      <input formControlName="date" type="date" placeholder="Date" />
+      <input formControlName="amount" type="number" placeholder="Amount" />
+      <input formControlName="note" placeholder="Note" />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>
