@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
+  production: true,
   apiUrl: 'https://crm-backend-ruddy-nine.vercel.app' 
 };
